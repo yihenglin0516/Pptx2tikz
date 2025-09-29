@@ -25,9 +25,11 @@ for slide_num, slide in enumerate(prs.slides, start=1):
         f.write("\\begin{tikzpicture}[scale=\\textwidth/")
         f.write(f"{slide_width:.2f}cm")
         f.write(", every node/.style={transform shape=false}]\n")
+        f.write(" \n")
         for shape in slide.shapes:
             tikz_cmd = util.shape_to_tikz(shape, slide_height)
             f.write(tikz_cmd)
+            f.write(" \n")
         f.write("\\end{tikzpicture}\n")
     f.close()
     print(f"--- Generated file : output_{file_name_suffix}_{slide_num}.tex ---")
